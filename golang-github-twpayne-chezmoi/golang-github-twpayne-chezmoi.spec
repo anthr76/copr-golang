@@ -16,7 +16,7 @@ Manage your dotfiles across multiple diverse machines, securely.}
 %global godocs          README.md docs
 
 Name:           %{goname}
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Manage your dotfiles across multiple diverse machines, securely
 
 License:        MIT
@@ -25,7 +25,7 @@ Source0:        %{gosource}
 
 BuildRequires:  golang(filippo.io/age)
 BuildRequires:  golang(filippo.io/age/armor)
-BuildRequires:  golang(github.com/bmatcuk/doublestar/v4)
+BuildRequires:  golang(github.com/bmatcuk/doublestar)
 BuildRequires:  golang(github.com/bradenhilton/mozillainstallhash)
 BuildRequires:  golang(github.com/charmbracelet/glamour)
 BuildRequires:  golang(github.com/coreos/go-semver/semver)
@@ -35,10 +35,10 @@ BuildRequires:  golang(github.com/go-git/go-git/plumbing/filemode)
 BuildRequires:  golang(github.com/go-git/go-git/plumbing/format/diff)
 BuildRequires:  golang(github.com/go-git/go-git/plumbing/transport)
 BuildRequires:  golang(github.com/go-git/go-git/plumbing/transport/http)
-BuildRequires:  golang(github.com/google/go-github/v44/github)
+BuildRequires:  golang(github.com/google/go-github/github)
 BuildRequires:  golang(github.com/google/gops/agent)
-BuildRequires:  golang(github.com/google/renameio/v2)
-BuildRequires:  golang(github.com/google/renameio/v2/maybe)
+BuildRequires:  golang(github.com/google/renameio)
+BuildRequires:  golang(github.com/google/renameio/maybe)
 BuildRequires:  golang(github.com/gregjones/httpcache)
 BuildRequires:  golang(github.com/gregjones/httpcache/diskcache)
 BuildRequires:  golang(github.com/Masterminds/sprig/v3)
@@ -53,9 +53,9 @@ BuildRequires:  golang(github.com/spf13/viper)
 BuildRequires:  golang(github.com/stretchr/testify/require)
 BuildRequires:  golang(github.com/twpayne/go-pinentry)
 BuildRequires:  golang(github.com/twpayne/go-shell)
-BuildRequires:  golang(github.com/twpayne/go-vfs/v4)
-BuildRequires:  golang(github.com/twpayne/go-vfs/v4/vfst)
-BuildRequires:  golang(github.com/twpayne/go-xdg/v6)
+BuildRequires:  golang(github.com/twpayne/go-vfs)
+BuildRequires:  golang(github.com/twpayne/go-vfs/vfst)
+BuildRequires:  golang(github.com/twpayne/go-xdg)
 BuildRequires:  golang(github.com/ulikunitz/xz)
 BuildRequires:  golang(github.com/zalando/go-keyring)
 BuildRequires:  golang(go.etcd.io/bbolt)
@@ -107,6 +107,12 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-4
+- Fix go-github dependency
+
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-3
+- Correct some go dependencies
+
 * Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-2
 - Add manual BuildRequires
 
