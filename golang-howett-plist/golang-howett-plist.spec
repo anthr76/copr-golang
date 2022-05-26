@@ -2,7 +2,8 @@
 %bcond_without check
 
 # https://github.com/DHowett/go-plist
-%global goipath         github.com/DHowett/go-plist
+%global goipath         howett.net/plist
+%global forgeurl        https://github.com/DHowett/go-plist
 Version:                1.0.0
 
 %gometa
@@ -14,13 +15,16 @@ A pure Go Apple Property List transcoder.}
 %global godocs          README.md cmd/ply/README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        4%{?dist}
 Summary:        A pure Go Apple Property List transcoder
 
 License:        # FIXME
 
 URL:            %{gourl}
 Source0:        %{gosource}
+
+BuildRequires:  golang(github.com/jessevdk/go-flags)
+BuildRequires:  golang(gopkg.in/yaml.v1)
 
 %description
 %{common_description}
@@ -30,18 +34,8 @@ Source0:        %{gosource}
 %prep
 %goprep
 
-%generate_buildrequires
-%go_generate_buildrequires
-
-%build
-for cmd in cmd/* ; do
-  %gobuild -o %{gobuilddir}/bin/$(basename $cmd) %{goipath}/$cmd
-done
-
 %install
 %gopkginstall
-install -m 0755 -vd                     %{buildroot}%{_bindir}
-install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %if %{with check}
 %check
@@ -50,11 +44,19 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %files
 %license LICENSE
-%doc README.md cmd/ply/README.md
-%{_bindir}/*
+%doc README.md
 
 %gopkgfiles
 
 %changelog
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-4
+- Fix %files
+
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-3
+- Remove binary references
+
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-2
+- Remove build step
+
 * Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-1
 - Initial package

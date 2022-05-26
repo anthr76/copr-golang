@@ -15,7 +15,7 @@ The missing interface filesystem abstraction for Go.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        The missing interface filesystem abstraction for Go
 
 # Upstream license specification: Apache-2.0
@@ -45,6 +45,12 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.3.1-4
+- Dont' use v5 in the package name
+
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.3.1-3
+- Use v5 in the package name
+
 * Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.3.1-2
 - Disable checks
 
