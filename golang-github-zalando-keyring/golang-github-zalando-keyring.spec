@@ -15,12 +15,14 @@ Cross-platform keyring interface for Go.}
 %global godocs          CONTRIBUTING.md README.md SECURITY.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Cross-platform keyring interface for Go
 
 License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
+
+BuildRequires:  dbus-x11
 
 %description
 %{common_description}
@@ -44,5 +46,11 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
+* Thu May 26 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.2.1-3
+- Fix dbus package name
+
+* Thu May 26 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.2.1-2
+- Add dbus to BuildRequires
+
 * Thu May 26 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.2.1-1
 - Initial package
