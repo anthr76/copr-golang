@@ -12,6 +12,7 @@ Version:                4.1.0
 Package vfs provides an abstraction of the os and io packages that is easy to
 test.}
 
+%global goaltipaths     github.com/twpayne/go-vfs/v3
 %global golicenses      LICENSE
 %global godocs          README.md
 
