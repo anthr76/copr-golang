@@ -8,6 +8,7 @@ Version:                5.3.1
 
 %gometa
 
+%global goaltipaths     github.com/go-git/go-billy/v5
 %global common_description %{expand:
 The missing interface filesystem abstraction for Go.}
 
@@ -45,6 +46,9 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.3.1-5
+- Set goaltipaths
+
 * Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.3.1-4
 - Enable tests
 
