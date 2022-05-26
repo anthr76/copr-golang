@@ -15,44 +15,13 @@ A highly extensible Git implementation in pure Go.}
                         CONTRIBUTING.md README.md
 
 Name:           %{goname}
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A highly extensible Git implementation in pure Go
 
 # Upstream license specification: Apache-2.0
 License:        ASL 2.0
 URL:            %{gourl}
 Source0:        %{gosource}
-
-BuildRequires:  golang(github.com/emirpasic/gods/trees/binaryheap)
-BuildRequires:  golang(github.com/go-git/gcfg)
-BuildRequires:  golang(github.com/go-git/go-billy)
-BuildRequires:  golang(github.com/go-git/go-billy/osfs)
-BuildRequires:  golang(github.com/go-git/go-billy/util)
-BuildRequires:  golang(github.com/imdario/mergo)
-BuildRequires:  golang(github.com/jbenet/go-context/io)
-BuildRequires:  golang(github.com/jessevdk/go-flags)
-BuildRequires:  golang(github.com/kevinburke/ssh_config)
-BuildRequires:  golang(github.com/mitchellh/go-homedir)
-BuildRequires:  golang(github.com/ProtonMail/go-crypto/openpgp)
-BuildRequires:  golang(github.com/sergi/go-diff/diffmatchpatch)
-BuildRequires:  golang(github.com/xanzy/ssh-agent)
-BuildRequires:  golang(golang.org/x/crypto/ssh)
-BuildRequires:  golang(golang.org/x/crypto/ssh/knownhosts)
-BuildRequires:  golang(golang.org/x/net/proxy)
-BuildRequires:  golang(golang.org/x/sys/execabs)
-BuildRequires:  golang(gopkg.in/check.v1)
-
-%if %{with check}
-# Tests
-BuildRequires:  golang(github.com/armon/go-socks5)
-BuildRequires:  golang(github.com/gliderlabs/ssh)
-BuildRequires:  golang(github.com/go-git/go-billy/memfs)
-BuildRequires:  golang(github.com/google/go-cmp/cmp)
-BuildRequires:  golang(github.com/ProtonMail/go-crypto/openpgp/armor)
-BuildRequires:  golang(github.com/ProtonMail/go-crypto/openpgp/errors)
-BuildRequires:  golang(golang.org/x/crypto/ssh/testdata)
-BuildRequires:  golang(golang.org/x/text/unicode/norm)
-%endif
 
 %description
 %{common_description}
@@ -61,6 +30,9 @@ BuildRequires:  golang(golang.org/x/text/unicode/norm)
 
 %prep
 %goprep
+
+%generate_buildrequires
+%go_generate_buildrequires
 
 %build
 for cmd in cli/go-git; do
@@ -85,6 +57,9 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
+* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.4.2-5
+- Generate build requires
+
 * Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 5.4.2-4
 - Fix macro ordering
 
