@@ -15,7 +15,7 @@ Cross-platform keyring interface for Go.}
 %global godocs          CONTRIBUTING.md README.md SECURITY.md
 
 Name:           %{goname}
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Cross-platform keyring interface for Go
 
 License:        MIT
@@ -24,7 +24,8 @@ Source0:        %{gosource}
 
 %if %{with check}
 # Tests
-BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.freedesktop.secrets)
+BuildRequires:  dbus-x11
+BuildRequires:  gnome-keyring
 %endif
 
 %description
@@ -49,6 +50,9 @@ BuildRequires:  golang(github.com/linuxdeepin/go-dbus-factory/org.freedesktop.se
 %gopkgfiles
 
 %changelog
+* Thu May 26 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.2.1-5
+- Revise tests BuildRequires
+
 * Thu May 26 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.2.1-4
 - Change dbus test dependency
 
