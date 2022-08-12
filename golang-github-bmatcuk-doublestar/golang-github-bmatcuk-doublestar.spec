@@ -4,7 +4,7 @@
 
 # https://github.com/bmatcuk/doublestar
 %global goipath         github.com/bmatcuk/doublestar
-Version:                4.0.2
+Version:                4.2.0
 
 %gometa
 
@@ -45,5 +45,4 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 4.0.2-1
-- Initial package
+%autochangelog
