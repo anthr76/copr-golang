@@ -15,7 +15,7 @@ A pure Go Apple Property List transcoder.}
 %global godocs          README.md cmd/ply/README.md
 
 Name:           %{goname}
-Release:        4%{?dist}
+Release:        %{autorelease}
 Summary:        A pure Go Apple Property List transcoder
 
 License:        # FIXME
@@ -49,14 +49,4 @@ BuildRequires:  golang(gopkg.in/yaml.v1)
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-4
-- Fix %files
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-3
-- Remove binary references
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-2
-- Remove build step
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-1
-- Initial package
+%autochangelog
