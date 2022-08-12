@@ -16,7 +16,7 @@ Cross-platform keyring interface for Go.}
 %global godocs          CONTRIBUTING.md README.md SECURITY.md
 
 Name:           %{goname}
-Release:        6%{?dist}
+Release:        %autorelease
 Summary:        Cross-platform keyring interface for Go
 
 License:        MIT

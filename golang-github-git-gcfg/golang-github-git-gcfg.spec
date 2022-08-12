@@ -16,7 +16,7 @@ Go-gcfg/gcfg fork for usage in src-d/go-git.}
 %global godocs          README
 
 Name:           %{goname}
-Release:        3%{?dist}
+Release:        %autorelease
 Summary:        Go-gcfg/gcfg fork for usage in src-d/go-git
 
 # Upstream license specification: BSD-3-Clause

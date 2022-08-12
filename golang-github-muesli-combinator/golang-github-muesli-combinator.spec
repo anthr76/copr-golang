@@ -16,7 +16,7 @@ set of its potential member values.}
 %global godocs          example README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Generates a slice of all possible value combinations for any given struct and a set of its potential member values
 
 License:        MIT

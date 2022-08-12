@@ -15,7 +15,7 @@ Package xdg provides support for the XDG Base Directory Specification.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        5%{?dist}
+Release:        %autorelease
 Summary:        Package xdg provides support for the XDG Base Directory Specification
 
 License:        MIT

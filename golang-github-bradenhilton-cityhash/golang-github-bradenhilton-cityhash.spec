@@ -15,7 +15,7 @@ Google CityHash version 1 in Go.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Google CityHash version 1 in Go
 
 License:        MIT

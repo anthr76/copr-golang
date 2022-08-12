@@ -17,7 +17,7 @@ test.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Package vfs provides an abstraction of the os and io packages that is easy to test
 
 License:        MIT

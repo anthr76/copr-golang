@@ -14,7 +14,7 @@ A tool to list and diagnose Go processes currently running on your system.}
 %global godocs          examples README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        A tool to list and diagnose Go processes currently running on your system
 
 # Upstream license specification: BSD-3-Clause

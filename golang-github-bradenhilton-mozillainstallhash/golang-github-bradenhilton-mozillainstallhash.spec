@@ -16,7 +16,7 @@ Mozilla software.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Go package which generates the hash used to differentiate between installs of Mozilla software
 
 License:        MIT

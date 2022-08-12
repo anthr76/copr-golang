@@ -16,7 +16,7 @@ Find, list, and inspect processes from Go (golang).}
 
 Name:           %{goname}
 Version:        0
-Release:        0.2%{?dist}
+Release:        %autorelease
 Summary:        Find, list, and inspect processes from Go (golang)
 
 License:        # FIXME

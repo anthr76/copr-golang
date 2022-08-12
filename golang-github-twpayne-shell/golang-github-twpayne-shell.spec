@@ -14,7 +14,7 @@ Go-shell returns a user's shell across multiple platforms.}
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Go-shell returns a user's shell across multiple platforms
 
 License:        MIT

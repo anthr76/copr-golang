@@ -16,7 +16,7 @@ Manage your dotfiles across multiple diverse machines, securely.}
 %global godocs          README.md docs
 
 Name:           %{goname}
-Release:        2%{?dist}
+Release:        %autorelease
 Summary:        Manage your dotfiles across multiple diverse machines, securely
 
 License:        MIT
