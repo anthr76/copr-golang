@@ -23,15 +23,13 @@ License:        # FIXME
 URL:            %{gourl}
 Source:         %{gosource}
 
-Patch:         001-remove-cmd-experimental.patch
-
 %description %{common_description}
 
 %gopkg
 
 %prep
 %goprep
-%autopatch -p1
+rm -r cmd/experimental
 
 %generate_buildrequires
 %go_generate_buildrequires
