@@ -26,6 +26,8 @@ Source0:        %{gosource}
 %description
 %{common_description}
 
+Requires: kubernetes-client
+
 %gopkg
 
 %prep
