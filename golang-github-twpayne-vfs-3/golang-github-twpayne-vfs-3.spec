@@ -4,7 +4,7 @@
 
 # https://github.com/twpayne/go-vfs
 %global goipath         github.com/twpayne/go-vfs/v3
-Version:                4.1.0
+Version:                3.0.0
 
 %gometa
 
