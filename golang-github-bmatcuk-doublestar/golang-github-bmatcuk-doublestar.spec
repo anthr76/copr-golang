@@ -16,7 +16,7 @@ filepath.Glob.}
 %global godocs          examples README.md UPGRADING.md
 
 Name:           %{goname}
-Release:        1%{?dist}
+Release:        %{autorelease}
 Summary:        Implements support for double star (**) matches in golang's path.Match and filepath.Glob
 
 License:        MIT
