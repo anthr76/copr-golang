@@ -16,7 +16,7 @@ Manage your dotfiles across multiple diverse machines, securely.}
 %global godocs          README.md docs
 
 Name:           %{goname}
-Release:        5%{?dist}
+Release:        2%{?dist}
 Summary:        Manage your dotfiles across multiple diverse machines, securely
 
 License:        MIT
@@ -57,17 +57,4 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-5
-- Generate BuildRequires
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-4
-- Fix go-github dependency
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-3
-- Correct some go dependencies
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-2
-- Add manual BuildRequires
-
-* Sun May 22 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 2.16.0-1
-- Initial package
+%autochangelog
