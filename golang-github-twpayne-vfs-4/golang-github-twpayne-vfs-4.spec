@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # https://github.com/twpayne/go-vfs
-%global goipath         github.com/twpayne/go-vfs
+%global goipath         github.com/twpayne/go-vfs/v4
 Version:                4.1.0
 
 %gometa
@@ -12,7 +12,6 @@ Version:                4.1.0
 Package vfs provides an abstraction of the os and io packages that is easy to
 test.}
 
-%global goaltipaths     github.com/twpayne/go-vfs/v3
 %global golicenses      LICENSE
 %global godocs          README.md
 
@@ -46,5 +45,4 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 4.1.0-1
-- Initial package
+%autochangelog

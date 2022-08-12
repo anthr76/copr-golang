@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # https://github.com/bmatcuk/doublestar
-%global goipath         github.com/bmatcuk/doublestar
+%global goipath         github.com/bmatcuk/doublestar/v4
 Version:                4.2.0
 
 %gometa

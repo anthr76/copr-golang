@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # https://github.com/twpayne/go-xdg
-%global goipath         github.com/twpayne/go-xdg
+%global goipath         github.com/twpayne/go-xdg/v6
 Version:                6.0.0
 
 %gometa
@@ -44,17 +44,4 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 6.0.0-5
-- Enable tests and generate BuildRequires
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 6.0.0-4
-- Disable tests since it's trying to pull github.com/twpayne/go-vfs/v3/vfs
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 6.0.0-3
-- Remove automatic macros
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 6.0.0-2
-- Add manual BuildRequires
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 6.0.0-1
-- Initial package
+%autochangelog
