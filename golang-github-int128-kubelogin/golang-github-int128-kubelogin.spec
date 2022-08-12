@@ -3,7 +3,7 @@
 
 # https://github.com/int128/kubelogin
 %global goipath         github.com/int128/kubelogin
-Version:                1.25.1
+Version:                1.25.2
 
 %gometa
 
