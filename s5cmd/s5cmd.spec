@@ -18,6 +18,8 @@ Version:                2.0.0
 # REMOVE BEFORE SUBMITTING THIS FOR REVIEW
 %gometa
 
+%global goname s5cmd
+
 %global common_description %{expand:
 Parallel S3 and local filesystem execution tool.}
 
