@@ -5,6 +5,8 @@
 %global goipath         github.com/twpayne/chezmoi
 Version:                2.20.0
 
+%global goname chezmoi
+
 %gometa
 
 %global common_description %{expand:

@@ -19,7 +19,7 @@ Version:        0
 Release:        %autorelease
 Summary:        Find, list, and inspect processes from Go (golang)
 
-License:        # FIXME
+License:        MIT
 
 URL:            %{gourl}
 Source0:        %{gosource}
@@ -40,6 +40,9 @@ Source0:        %{gosource}
 
 %if %{with check}
 %check
+# github.com/keybase/go-ps
+#./process_openbsd.go:26:1: misplaced +build comment
+sed -i '/\/\/ +build ignore/d' process_openbsd.go
 %gocheck
 %endif
 
