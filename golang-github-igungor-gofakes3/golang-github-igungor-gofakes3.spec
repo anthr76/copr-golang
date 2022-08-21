@@ -17,7 +17,7 @@ Version:                0.0.12
 # you'll need to coordinate the removal of the package's dependents first.
 # ---
 # REMOVE BEFORE SUBMITTING THIS FOR REVIEW
-%gometa -f
+%gometa
 
 %global common_description %{expand:
 A simple fake AWS S3 object storage (used for local test-runs against AWS S3
