@@ -34,7 +34,7 @@ License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
 
-Patch:          001-remove-vendor-test.patch
+Patch:          001-fix-e2e-builds.patch
 
 %description %{common_description}
 
