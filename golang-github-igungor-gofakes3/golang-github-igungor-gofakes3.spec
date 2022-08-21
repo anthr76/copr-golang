@@ -34,15 +34,12 @@ License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
 
-Patch:          001-remove-broken-test.patch
-
 %description %{common_description}
 
 %gopkg
 
 %prep
 %goprep
-%autopatch -p 1
 
 %generate_buildrequires
 %go_generate_buildrequires
@@ -60,6 +57,10 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %if %{with check}
 %check
+for test in "TestCopyObject" \
+; do
+awk -i inplace '/^func.*'"$test"'\(/ { print; print "\tt.Skip(\"disabled failing test\")"; next}1' $(grep -rl $test)
+done
 %gocheck
 %endif
 
