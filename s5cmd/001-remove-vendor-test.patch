@@ -1,0 +1,26 @@
+commit a8a33ac246c6836b679ae273d215825dd9d7e992
+Author: Anthony Rabbito <hello@anthonyrabbito.com>
+Date:   Sat Aug 20 22:14:06 2022 -0400
+
+    [PATCH] remove mod vendor from e2e
+    
+    Signed-off-by: Anthony Rabbito <hello@anthonyrabbito.com>
+
+:100644 100644 38efbc8 5ae4888 M	e2e/util_test.go
+
+diff --git a/e2e/util_test.go b/e2e/util_test.go
+index 38efbc8..5ae4888 100644
+--- a/e2e/util_test.go
++++ b/e2e/util_test.go
+@@ -211,9 +211,9 @@ func goBuildS5cmd() func() {
+ 
+ 		 Ref: https://github.com/golang/go/issues/22553
+ 		*/
+-		args = []string{"build", "-mod=vendor", "-o", s5cmdPath}
++		args = []string{"build", "-o", s5cmdPath}
+ 	} else {
+-		args = []string{"build", "-mod=vendor", "-race", "-o", s5cmdPath}
++		args = []string{"build", "-race", "-o", s5cmdPath}
+ 	}
+ 	cmd := exec.Command("go", args...)
+ 	cmd.Stderr = os.Stderr

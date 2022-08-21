@@ -34,12 +34,18 @@ License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
 
+Patch:          001-remove-vendor-test.patch
+
 %description %{common_description}
 
 %gopkg
 
 %prep
 %goprep
+# Remove vendored go within upstream's SCM
+rm -rf vendor/
+# Assums vendored go build
+%autopatch -p 1
 
 %generate_buildrequires
 %go_generate_buildrequires
