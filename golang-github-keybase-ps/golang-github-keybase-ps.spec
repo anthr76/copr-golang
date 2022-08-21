@@ -46,8 +46,4 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0-0.2.20220525git91aafc9
-- Disable tests
-
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0-0.2.20220525git91aafc9
-- Initial package
+%autochangelog
