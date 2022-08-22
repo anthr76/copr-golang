@@ -45,5 +45,4 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 1.0.0-1
-- Initial package
+%autochangelog
