@@ -18,7 +18,7 @@ Colorizes kubectl output.}
 
 Name:           %{goname}
 Version:        0
-Release:        %autorelease -p -b 2
+Release:        %autorelease -p
 Summary:        Colorizes kubectl output
 
 License:        MIT
