@@ -19,7 +19,8 @@ Name:           %{goname}
 Release:        %autorelease
 Summary:        A pure Go Apple Property List transcoder
 
-License:        # FIXME
+# Upstream license specification: BSD-3-Clause
+License:        BSD
 URL:            %{gourl}
 Source:         %{gosource}
 
@@ -29,6 +30,7 @@ Source:         %{gosource}
 
 %prep
 %goprep
+# Requires syscall/js and web assembly deps
 rm -r cmd/experimental
 
 %generate_buildrequires
