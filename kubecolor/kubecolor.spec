@@ -8,6 +8,8 @@
 
 %gometa
 
+%global goname kubecolor
+
 %global common_description %{expand:
 Colorizes kubectl output.}
 
