@@ -54,5 +54,4 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
-* Wed May 25 2022 Anthony Rabbito <hello@anthonyrabbito.com> - 0.3.23-1
-- Initial package
+%autochangelog
