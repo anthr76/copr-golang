@@ -16,13 +16,15 @@ login).}
                         system_test/README.md
 
 Name:           %{goname}
-Release:        %autorelease
+Release:        %autorelease -b 2
 Summary:        Kubectl plugin for Kubernetes OpenID Connect authentication (kubectl oidc-login)
 
 # Upstream license specification: Apache-2.0
 License:        ASL 2.0
 URL:            %{gourl}
 Source0:        %{gosource}
+
+Requires:       kubernetes-client
 
 %description
 %{common_description}
