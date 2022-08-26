@@ -13,19 +13,20 @@
 %global common_description %{expand:
 Colorizes kubectl output.}
 
+
 %global golicenses      LICENSE
 %global godocs          README.md
 
 Name:           %{goname}
 Version:        0
-Release:        %autorelease -p -b 3
+Release:        %autorelease -p -b 4
 Summary:        Colorizes kubectl output
 
 License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
-Requires: kubernetes-client
+Requires:   kubernetes-client
 
 %description
 %{common_description}
