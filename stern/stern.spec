@@ -26,7 +26,7 @@ Multi pod and container log tailing for Kubernetes}
 %global godocs          CONTRIBUTING.md README.md
 
 Name:           %{goname}
-Release:        %autorelease
+Release:        %autorelease -b 4
 Summary:        Multi pod and container log tailing for Kubernetes
 
 License:        Apache-2.0
@@ -46,12 +46,24 @@ rm -r ./hack
 %go_generate_buildrequires
 
 %build
+export LDFLAGS="-X github.com/stern/stern/cmd.version=%{version}  \
+                -X github.com/stern/stern/cmd.date=$(date -d "@${SOURCE_DATE_EPOCH}" +%Y-%m-%d)"
 %gobuild -o %{gobuilddir}/bin/stern %{goipath}
+
+# Generate shell completions
+%{gobuilddir}/bin/%{name} --completion bash > %{name}.bash
+%{gobuilddir}/bin/%{name} --completion fish > %{name}.fish
+%{gobuilddir}/bin/%{name} --completion zsh  > %{name}.zsh
+
 
 %install
 %gopkginstall
 install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
+# Install shell completions
+install -Dpm 0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dpm 0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dpm 0644 %{name}.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %if %{with check}
 %check
@@ -62,6 +74,15 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %license LICENSE
 %doc CONTRIBUTING.md README.md
 %{_bindir}/*
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %gopkgfiles
 
