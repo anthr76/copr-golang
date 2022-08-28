@@ -18,7 +18,7 @@ login).}
                         system_test/README.md
 
 Name:           %{goname}
-Release:        %autorelease -b 4
+Release:        %autorelease -b 5
 Summary:        Kubectl plugin for Kubernetes OpenID Connect authentication (kubectl oidc-login)
 
 # Upstream license specification: Apache-2.0
@@ -40,15 +40,25 @@ Requires:   kubernetes-client
 %go_generate_buildrequires
 
 %build
+export LDFLAGS="-X main.version=%{version} "
 %gobuild -o %{gobuilddir}/bin/kubelogin %{goipath}
 for cmd in system_test/login/chromelogin pkg/testing/httpserver; do
   %gobuild -o %{gobuilddir}/bin/$(basename $cmd) %{goipath}/$cmd
 done
+# Generate shell completions
+%{gobuilddir}/bin/%{name} completion bash > %{name}.bash
+%{gobuilddir}/bin/%{name} completion fish > %{name}.fish
+%{gobuilddir}/bin/%{name} completion zsh  > %{name}.zsh
 
 %install
 %gopkginstall
 install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
+# Install shell completions
+install -Dpm 0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dpm 0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dpm 0644 %{name}.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
 
 %if %{with check}
 %check
@@ -59,6 +69,16 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %license LICENSE
 %doc docs README.md acceptance_test/README.md system_test/README.md
 %{_bindir}/*
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
+
 
 %gopkgfiles
 
