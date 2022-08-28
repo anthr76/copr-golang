@@ -17,7 +17,7 @@ Parallel S3 and local filesystem execution tool.}
 %global godocs          doc CONTRIBUTING.md CHANGELOG.md README.md
 
 Name:           %{goname}
-Release:        %autorelease -b 2
+Release:        %autorelease -b 5
 Summary:        Parallel S3 and local filesystem execution tool
 
 License:        MIT
@@ -41,7 +41,7 @@ rm -rf vendor/
 %go_generate_buildrequires
 
 %build
-export LDFLAGS="-X github.com/peak/s5cmd/version.Version=%{version} "
+export LDFLAGS="-s -w -X github.com/peak/s5cmd/version.Version=%{version} -X github.com/peak/s5cmd/version.GitCommit= "
 %gobuild -o %{gobuilddir}/bin/s5cmd %{goipath}
 
 %install
