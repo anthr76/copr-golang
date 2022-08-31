@@ -15,7 +15,7 @@ Version:                0.3.6
 %global godocs          README.md
 
 Name:           %{goname}
-Release:        %autorelease
+Release:        %autorelease -b 2
 Summary:        A modern watch command. Time machine and pager etc
 
 License:        MIT
@@ -33,6 +33,7 @@ Source:         %{gosource}
 %go_generate_buildrequires
 
 %build
+export LDFLAGS="-X main.version=%{version} "
 %gobuild -o %{gobuilddir}/bin/viddy %{goipath}
 
 %install
