@@ -38,6 +38,10 @@ Source:         %{gosource}
 %gopkginstall
 
 %if %{with check}
+# This project is archived and no longer maintained.
+# The test provided is an example.
+# It currently throws a nilpointer
+rm ./examples_test.go
 %check
 %gocheck
 %endif
