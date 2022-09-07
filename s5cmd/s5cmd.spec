@@ -4,6 +4,7 @@
 
 # https://github.com/peak/s5cmd
 %global goipath         github.com/peak/s5cmd
+%global commit          d21a491f957016b4850fa88d8648e872ca7b8ee0
 Version:                2.0.0
 
 %gometa
@@ -17,14 +18,12 @@ Parallel S3 and local filesystem execution tool.}
 %global godocs          doc CONTRIBUTING.md CHANGELOG.md README.md
 
 Name:           %{goname}
-Release:        %autorelease -b 6
+Release:        %autorelease
 Summary:        Parallel S3 and local filesystem execution tool
 
 License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
-
-Patch:          001-fix-e2e-builds.patch
 
 %description %{common_description}
 
@@ -34,8 +33,6 @@ Patch:          001-fix-e2e-builds.patch
 %goprep
 # Remove vendored go within upstream's SCM
 rm -rf vendor/
-# Assums vendored go build
-%autopatch -p 1
 
 %generate_buildrequires
 %go_generate_buildrequires
@@ -51,6 +48,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %if %{with check}
 %check
+sed -i 's/"-mod=vendor", //' e2e/util_test.go
 %ifarch ppc64le
 for test in "TestRemoveS3ObjectsWithEmptyExcludeFilter" "TestListS3ObjectsWithEmptyExcludeFilter" \
 ; do
