@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: MIT
+ 
+"""
+Copyright 2022 Mike Rochefort
+ 
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+ 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+"""
+ 
+import os
+import sys
+ 
+ 
+def find_modules(start_dir):
+    module_files = list()
+ 
+    for root, dirs, files in os.walk(start_dir):
+        if "modules.txt" in files:
+            module_files.append(f"{root}/modules.txt")
+ 
+    return module_files
+ 
+ 
+def determine_dependencies(module_file):
+    bundles = list()
+    with open(module_file) as data:
+        for line in data:
+            if line[:2] == "# ":
+                base = line.strip()
+                if "=>" in base:
+                    base = base.split("=>")[-1].strip()
+                else:
+                    base = base[2:]
+                dep = base.split()
+                dep[1] = dep[1].replace("-", ".")
+                dep[1] = dep[1].removeprefix("v")
+                dep[1] = dep[1].removesuffix("+incompatible")
+                bundles.append(dep)
+    return bundles
+ 
+ 
+def main():
+    root_dir = sys.argv[1].rstrip("/")
+ 
+    bundled = list()
+    modules = find_modules(root_dir)
+    for module in modules:
+        bundled.append(determine_dependencies(module))
+ 
+    used = set()
+    result = ""
+    for module in bundled:
+        for dep in module:
+            if dep[0] not in used:
+                used.add(dep[0])
+                result += f"Provides: bundled(golang({dep[0]})) = {dep[1]}\n"
+ 
+    formatted = result.splitlines()
+    formatted.sort()
+    result = "# Bundled golang dependencies:\n"
+    for line in formatted:
+        result += line + "\n"
+    print(result)
+ 
+if __name__ == '__main__':
+    if (sys.version_info.major >= 3) and (sys.version_info.minor >= 9):
+        main()
+    else:
+        sys.exit("Python >= 3.9 is required to run this script.")

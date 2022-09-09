@@ -5,7 +5,7 @@
 # https://github.com/peak/s5cmd
 %global goipath         github.com/peak/s5cmd
 %global commit          d21a491f957016b4850fa88d8648e872ca7b8ee0
-Version:                2.0.0
+Version:                0
 
 %gometa
 
@@ -18,7 +18,7 @@ Parallel S3 and local filesystem execution tool.}
 %global godocs          doc CONTRIBUTING.md CHANGELOG.md README.md
 
 Name:           %{goname}
-Release:        %autorelease
+Release:        %autorelease -p
 Summary:        Parallel S3 and local filesystem execution tool
 
 License:        MIT
