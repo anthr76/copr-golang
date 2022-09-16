@@ -17,6 +17,9 @@ endif
 ifeq ($(spec),flux2/flux2.spec)
 	make -f .copr/Makefile flux outdir=$(outdir) spec=$(spec)
 endif
+ifeq ($(spec),chezmoi/chezmoi.spec)
+	$(MAKE) -f .copr/Makefile chezmoi outdir=$(outdir) spec=$(spec)
+endif
 	tar xf $(outdir)/$(BASENAME).tar.gz -C $(outdir)
 	cd $(outdir)/$(BASENAME) && go mod vendor
 	./generate_bundled_deps $(outdir)/$(BASENAME) > $(outdir)/bundled.inc
@@ -36,3 +39,5 @@ flux-manifests:
 	$(outdir)/$(BASENAME)/manifests/scripts/bundle.sh
 	cd $(outdir) && tar czf $(BASENAME)-bundled-manifests.tar.gz $(BASENAME)/cmd/flux/manifests
 
+chezmoi:
+wget -O $(outdir)/chezmoi-$(VERSION).tar.gz https://github.com/twpayne/chezmoi/archive/refs/tags/v$(VERSION).tar.gz

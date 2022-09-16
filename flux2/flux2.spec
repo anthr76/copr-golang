@@ -27,6 +27,8 @@ Source1:        %{name}-%{version}-vendored-deps.tar.gz
 Source2:        bundled.inc
 Source3:        %{name}-%{version}-bundled-manifests.tar.gz
 
+%include        %SOURCE2
+
 %description %{common_description}
 
 %gopkg
