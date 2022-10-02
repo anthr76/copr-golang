@@ -3,9 +3,9 @@
 
 # https://github.com/google/gops
 %global goipath         github.com/google/gops
-Version:                0.3.23
+Version:                0.3.25
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 A tool to list and diagnose Go processes currently running on your system.}
@@ -13,12 +13,13 @@ A tool to list and diagnose Go processes currently running on your system.}
 %global golicenses      LICENSE
 %global godocs          examples README.md
 
+%global goname  gops
 Name:           %{goname}
 Release:        %autorelease
 Summary:        A tool to list and diagnose Go processes currently running on your system
 
 # Upstream license specification: BSD-3-Clause
-License:        BSD
+License:        BSD-3-Clause
 URL:            %{gourl}
 Source0:        %{gosource}
 

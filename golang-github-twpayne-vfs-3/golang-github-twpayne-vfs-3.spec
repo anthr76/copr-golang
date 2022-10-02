@@ -6,7 +6,7 @@
 %global goipath         github.com/twpayne/go-vfs/v3
 Version:                3.0.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Package vfs provides an abstraction of the os and io packages that is easy to

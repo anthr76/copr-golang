@@ -3,7 +3,7 @@
 
 # https://github.com/fluxcd/flux2
 %global goipath         github.com/fluxcd/flux2
-%global goname          flux2
+%global goname          flux
 Version:                0.33.0
 
 %gometa
@@ -17,7 +17,7 @@ GitOps Toolkit.}
                         action/README.md install/README.md\\\
 
 Name:           %{goname}
-Release:        %autorelease -b 3
+Release:        %autorelease
 Summary:        Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit
 
 License:        Apache-2.0

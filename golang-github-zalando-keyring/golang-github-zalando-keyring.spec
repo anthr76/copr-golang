@@ -8,7 +8,7 @@
 %global goipath         github.com/zalando/go-keyring
 Version:                0.2.1
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Cross-platform keyring interface for Go.}

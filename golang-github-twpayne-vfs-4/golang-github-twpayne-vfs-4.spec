@@ -6,7 +6,7 @@
 %global goipath         github.com/twpayne/go-vfs/v4
 Version:                4.1.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Package vfs provides an abstraction of the os and io packages that is easy to

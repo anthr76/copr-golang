@@ -6,7 +6,7 @@
 %global goipath         github.com/muesli/combinator
 Version:                0.3.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Generates a slice of all possible value combinations for any given struct and a

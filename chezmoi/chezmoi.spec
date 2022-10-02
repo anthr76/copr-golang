@@ -7,7 +7,7 @@ Version:                2.21.1
 
 %global goname chezmoi
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Manage your dotfiles across multiple diverse machines, securely.}
@@ -18,16 +18,12 @@ Manage your dotfiles across multiple diverse machines, securely.}
 %global godocs          README.md docs
 
 Name:           %{goname}
-Release:        %autorelease -b 2
+Release:        %autorelease
 Summary:        Manage your dotfiles across multiple diverse machines, securely
 
 License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
-Source1:        %{name}-%{version}-vendored-deps.tar.gz
-Source2:        bundled.inc
-
-%include        %SOURCE2
 
 %description
 %{common_description}
@@ -35,9 +31,10 @@ Source2:        bundled.inc
 %gopkg
 
 %prep
-%autosetup
-tar -xf %SOURCE1 --strip-components=1
-%goprep -e -k
+%goprep
+
+%generate_buildrequires
+%go_generate_buildrequires
 
 %build
 export LDFLAGS="-X main.version=%{version}  \

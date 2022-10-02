@@ -6,7 +6,7 @@
 %global goipath         github.com/keybase/go-ps
 %global commit          91aafc93ba19d1988cff338c1929d35b6c6f5b50
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Find, list, and inspect processes from Go (golang).}

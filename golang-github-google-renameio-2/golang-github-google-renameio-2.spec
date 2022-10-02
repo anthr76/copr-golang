@@ -6,7 +6,7 @@
 %global goipath         github.com/google/renameio/v2
 Version:                2.0.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Package renameio provides a way to atomically create or replace a file or

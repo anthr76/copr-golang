@@ -6,7 +6,7 @@
 %global goipath         github.com/bmatcuk/doublestar/v4
 Version:                4.2.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Implements support for double star (**) matches in golang's path.Match and
