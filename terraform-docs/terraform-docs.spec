@@ -13,6 +13,7 @@ Generate documentation from Terraform modules in various output formats.}
 %global golicenses      LICENSE
 %global godocs          docs examples CONTRIBUTING.md README.md docs
 
+%global goname  terraform-docs
 Name:           %{goname}
 Release:        %autorelease
 Summary:        Generate documentation from Terraform modules in various output formats
