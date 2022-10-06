@@ -4,7 +4,7 @@
 
 # https://github.com/peak/s5cmd
 %global goipath         github.com/peak/s5cmd
-%global commit          d21a491f957016b4850fa88d8648e872ca7b8ee0
+%global commit          83ce8bc6a1016bcea46da48e9090f8e761478149
 Version:                0
 
 %gometa

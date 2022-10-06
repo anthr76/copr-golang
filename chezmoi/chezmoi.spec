@@ -3,7 +3,7 @@
 
 # https://github.com/twpayne/chezmoi
 %global goipath         github.com/twpayne/chezmoi
-Version:                2.21.1
+Version:                2.24.0
 
 %global goname chezmoi
 

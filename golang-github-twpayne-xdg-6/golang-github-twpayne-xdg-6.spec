@@ -6,7 +6,7 @@
 %global goipath         github.com/twpayne/go-xdg/v6
 Version:                6.0.0
 
-%gometa
+%gometa -f
 
 %global common_description %{expand:
 Package xdg provides support for the XDG Base Directory Specification.}
@@ -22,6 +22,8 @@ License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
+Patch:          0001-update-go-vfs.patch
+
 %description
 %{common_description}
 
@@ -29,6 +31,7 @@ Source0:        %{gosource}
 
 %prep
 %goprep
+%autopatch -p 1
 
 %generate_buildrequires
 %go_generate_buildrequires

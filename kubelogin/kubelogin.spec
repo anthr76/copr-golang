@@ -3,7 +3,7 @@
 
 # https://github.com/int128/kubelogin
 %global goipath         github.com/int128/kubelogin
-Version:                1.25.2
+Version:                1.25.3
 
 %global goname          kubelogin
 
@@ -18,11 +18,10 @@ login).}
                         system_test/README.md
 
 Name:           %{goname}
-Release:        %autorelease -b 5
+Release:        %autorelease
 Summary:        Kubectl plugin for Kubernetes OpenID Connect authentication (kubectl oidc-login)
 
-# Upstream license specification: Apache-2.0
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            %{gourl}
 Source0:        %{gosource}
 
