@@ -18,7 +18,6 @@ Name:           %{goname}
 Release:        %autorelease
 Summary:        A tool to list and diagnose Go processes currently running on your system
 
-# Upstream license specification: BSD-3-Clause
 License:        BSD-3-Clause
 URL:            %{gourl}
 Source0:        %{gosource}
