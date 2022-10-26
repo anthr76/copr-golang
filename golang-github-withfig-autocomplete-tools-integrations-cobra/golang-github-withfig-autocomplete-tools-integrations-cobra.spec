@@ -16,11 +16,11 @@ Version:                0
 %global common_description %{expand:
 Cobra intergration for the fig shell.}
 
-%global golicenses      LICENSE integrations/cobra/LICENSE
-%global godocs          README.md integrations/cobra/README.md
+%global golicenses      LICENSE integrations/cobra/LICENSE-COBRA
+%global godocs          README.md README-cobra.md
 
 Name:           %{goname}
-Release:        %autorelease
+Release:        %autorelease -p
 Summary:        Command line tools for working with Fig autocomplete specs
 
 License:        MIT
@@ -33,6 +33,9 @@ Source:         %{gosource}
 
 %prep
 %goprep
+# CWD is in gosourcedir0
+mv README.md README-cobra.md
+mv LICENSE LICENSE-COBRA
 
 %generate_buildrequires
 %go_generate_buildrequires

@@ -4,7 +4,7 @@
 # https://github.com/fluxcd/flux2
 %global goipath         github.com/fluxcd/flux2
 %global goname          flux
-Version:                0.33.0
+Version:                0.35.0
 
 %gometa
 
@@ -22,7 +22,7 @@ Summary:        Open and extensible continuous delivery solution for Kubernetes.
 
 License:        Apache-2.0
 URL:            %{gourl}
-Source:         %{gosource}
+Source:         %{goname}-%{version}.tar.gz
 Source1:        %{name}-%{version}-vendored-deps.tar.gz
 Source2:        bundled.inc
 Source3:        %{name}-%{version}-bundled-manifests.tar.gz
