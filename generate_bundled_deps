@@ -27,6 +27,17 @@ DEALINGS IN THE SOFTWARE.
 import os
 import sys
  
+def get_project():
+    with open("go.mod", "r") as file:
+        contents = file.readlines()
+ 
+    for line in contents:
+        info = line.split()
+        if "module" == info[0]:
+            module = info[1]
+            break
+ 
+    return module
  
 def find_modules(start_dir):
     module_files = list()
@@ -38,14 +49,18 @@ def find_modules(start_dir):
     return module_files
  
  
-def determine_dependencies(module_file):
+def determine_dependencies(module_file, project, version):
     bundles = list()
     with open(module_file) as data:
         for line in data:
             if line[:2] == "# ":
                 base = line.strip()
                 if "=>" in base:
-                    base = base.split("=>")[-1].strip()
+                    check = base.split("=>")[-1].strip()
+                    if check[:2] == "./":
+                        base = f'{project}/{check[2:]} v{version}'
+                    else:
+                        base = check
                 else:
                     base = base[2:]
                 dep = base.split()
@@ -57,12 +72,14 @@ def determine_dependencies(module_file):
  
  
 def main():
-    root_dir = sys.argv[1].rstrip("/")
+    version = sys.argv[1]
+    root_dir = sys.argv[2].rstrip("/")
+    project = get_project()
  
     bundled = list()
     modules = find_modules(root_dir)
     for module in modules:
-        bundled.append(determine_dependencies(module))
+        bundled.append(determine_dependencies(module, project, version))
  
     used = set()
     result = ""

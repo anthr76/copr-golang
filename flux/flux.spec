@@ -22,7 +22,7 @@ Summary:        Open and extensible continuous delivery solution for Kubernetes.
 
 License:        Apache-2.0
 URL:            %{gourl}
-Source:         %{goname}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}-vendored-deps.tar.gz
 Source2:        bundled.inc
 Source3:        %{name}-%{version}-bundled-manifests.tar.gz
@@ -34,7 +34,7 @@ Source3:        %{name}-%{version}-bundled-manifests.tar.gz
 %gopkg
 
 %prep
-%autosetup
+%autosetup -n %{name}2-%{version}
 tar -xf %SOURCE1 --strip-components=1
 tar -xf %SOURCE3 --strip-components=1
 %goprep -e -k
